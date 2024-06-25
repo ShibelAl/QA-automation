@@ -1,0 +1,73 @@
+body {
+    background-color: gainsboro;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.upper-section{
+    display: flex;
+    padding: 20px;
+}
+
+.banner{
+    background-color: rgb(76, 136, 214);
+    color: white;
+    padding: 25px;
+}
+
+.banner_text{
+    font-size: 30px;
+    word-spacing: 7px;
+    letter-spacing: 3px;
+}
+
+.job{
+    font-size: 14px;
+    word-spacing: 7px;
+    letter-spacing: 3px;
+}
+
+.contact{
+    margin-left: 30px;
+    letter-spacing: 1px;
+}
+
+.contact a{
+    color: rgb(76, 136, 214);
+    text-decoration: none;/*to remove the underline*/
+}
+
+.line{
+    height: 3px;
+    background: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 20%;
+}
+
+.section{
+    padding-left: 20px;
+    margin-bottom: 20px; /*even though it's not necessary, the lines separate the sections*/
+}
+
+.section h2{
+    margin: 0;
+    color: rgb(76, 136, 214);
+}
+
+.skills{
+    display: flex;
+}
+
+.skills > div{ /*need to clarify, the '>' sign*/
+    width: 30%;
+}
+
+.skills ul{
+    list-style-type: none; /*to remove the dots of the <li>*/
+    padding: 0;
+}
+
+.skills ul li{
+    margin: 10px 0; /*the space between each two lines*/
+}
