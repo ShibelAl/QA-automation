@@ -15,7 +15,8 @@ class TestMathFunction(unittest.TestCase):
     def test_is_even_false(self):
         self.assertFalse(is_even(1), "test failed!")
         self.assertFalse(is_even(3), "test failed")
-        self.assertRaises(TypeError, is_even('a'))
+        with self.assertRaises(TypeError):
+            is_even('a')
 
     def test_sum_function_correct(self):
         self.assertEqual(1, sum_function(0, 1), "test failed!")
@@ -26,6 +27,6 @@ class TestMathFunction(unittest.TestCase):
         self.assertNotEqual(8, sum_function(-10, 2), "test failed!")
 
     # def test_mul_function_correct(self):
-
+    
 
     # def test_mul_function_correct(self):
