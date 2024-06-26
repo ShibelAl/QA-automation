@@ -18,6 +18,22 @@ class Library:
         self.books = []
         self.load_library()
 
+    def get_filename(self):
+        """
+        Get the filename of the library.
+
+        :return: (str) filename
+        """
+        return self.filename
+
+    def get_books(self):
+        """
+        Get the list of books in the library.
+
+        :return: (list) books
+        """
+        return self.books
+
     def add_book(self, book):
         """
         Add a book to the library and save the updated library data.
@@ -124,7 +140,21 @@ class Library:
         """
         try:
             with open(self.filename, 'r') as file:
-                book_dicts = json.load(file)
+                book_dicts = json.load(file)  # book_dicts is a list of dictionaries
+                # **book_dict unpacks each dictionary into keyword arguments for the Book constructor.
                 self.books = [Book(**book_dict) for book_dict in book_dicts]
         except FileNotFoundError:
             self.books = []
+
+    def get_books_list(self):
+        list = []
+        for book in self.books:
+            list.append({
+                "title": book.get_title(),
+                "author": book.get_author(),
+                "publication_year": book.get_publication_year(),
+                "genre": book.get_genre(),
+                "is_borrowed": book.get_is_borrowed(),
+                "borrowed_timestamp": book.get_borrowed_timestamp()
+            })
+        return list
