@@ -3,21 +3,21 @@ from base_page_app import BasePageApp
 
 
 class ShoppingCart(BasePageApp):
-    REMOVE_BACKPACK = (By.XPATH, '//button[@id = "remove-sauce-labs-backpack"]')
-    REMOVE_BIKE_LIGHT = (By.XPATH, '//button[@id = "remove-sauce-labs-bike-light"]')
-    REMOVE_T_SHIRT = (By.XPATH, '//button[@id = "remove-sauce-labs-bolt-t-shirt"]')
-    ITEM_NAME = (By.XPATH, '//div[contains(text(), "Sauce Labs Backpack")]')
-    CONTINUE_SHOPPING_BUTTON = (By.XPATH, '//button[@id = "continue-shopping"]')
-    CHECKOUT_BUTTON = (By.XPATH, '//button[@class = "btn btn_action btn_medium checkout_button "]')
+    REMOVE_BACKPACK = '//button[@id = "remove-sauce-labs-backpack"]'
+    REMOVE_BIKE_LIGHT = '//button[@id = "remove-sauce-labs-bike-light"]'
+    REMOVE_T_SHIRT = '//button[@id = "remove-sauce-labs-bolt-t-shirt"]'
+    ITEM_NAME = '//div[contains(text(), "Sauce Labs Backpack")]'
+    CONTINUE_SHOPPING_BUTTON = '//button[@id = "continue-shopping"]'
+    CHECKOUT_BUTTON = '//button[@class = "btn btn_action btn_medium checkout_button "]'
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._remove_backpack = self._driver.find_element(self.REMOVE_BACKPACK)
-        self._remove_bike_light = self._driver.find_element(self.REMOVE_BIKE_LIGHT)
-        self._remove_t_shirt = self._driver.find_element(self.REMOVE_T_SHIRT)
-        self._item_name = self._driver.find_element(self.ITEM_NAME)
-        self._continue_shopping_button = self._driver.find_element(self.CONTINUE_SHOPPING_BUTTON)
-        self._checkout_button = self._driver.find_element(self.CHECKOUT_BUTTON)
+        self._remove_backpack = self._driver.find_element(By.XPATH, self.REMOVE_BACKPACK)
+        self._remove_bike_light = self._driver.find_element(By.XPATH, self.REMOVE_BIKE_LIGHT)
+        self._remove_t_shirt = self._driver.find_element(By.XPATH, self.REMOVE_T_SHIRT)
+        self._item_name = self._driver.find_element(By.XPATH, self.ITEM_NAME)
+        self._continue_shopping_button = self._driver.find_element(By.XPATH, self.CONTINUE_SHOPPING_BUTTON)
+        self._checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
 
     def remove_backpack_from_cart(self):
         self._remove_backpack.click()
