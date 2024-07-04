@@ -4,7 +4,6 @@ from saucedemo_website.infra.config_provider import ConfigProvider
 from saucedemo_website.infra.browser_wrapper import BrowserWrapper
 from saucedemo_website.logic.login_page import LoginPage
 from saucedemo_website.logic.home_page import HomePage
-# from saucedemo_website.logic.shopping_cart_page import ShoppingCart
 
 
 class TestHomePage(unittest.TestCase):
