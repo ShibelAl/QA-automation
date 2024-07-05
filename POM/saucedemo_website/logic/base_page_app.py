@@ -3,6 +3,7 @@ from saucedemo_website.infra.base_page import BasePage
 
 
 class BasePageApp(BasePage):
+    HEADER_TEXT = '//div[@class="app_logo"]'
     # cart button in the top right
     CART_BUTTON = '//a[@class="shopping_cart_link"]'
     # menu button in the top left, and it's inner buttons
@@ -18,15 +19,19 @@ class BasePageApp(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
+        self._header_text = self._driver.find_element(By.XPATH, self.HEADER_TEXT)
         self._cart_button = self._driver.find_element(By.XPATH, self.CART_BUTTON)
         self._menu_button = self._driver.find_element(By.XPATH, self.MENU_BUTTON)
         self._all_items_in_menu = self._driver.find_element(By.XPATH, self.ALL_ITEMS_IN_MENU)
-        self._about_button_in_menu = self._driver.find_element(By.XPATH, self.MENU_BUTTON)
+        self._about_button_in_menu = self._driver.find_element(By.XPATH, self.ABOUT_BUTTON_IN_MENU)
         self._logout_button_in_menu = self._driver.find_element(By.XPATH, self.LOGOUT_BUTTON_IN_MENU)
         self._reset_button_in_menu = self._driver.find_element(By.XPATH, self.RESET_BUTTON_IN_MENU)
         self._twitter_button = self._driver.find_element(By.XPATH, self.TWITTER_BUTTON)
         self._facebook_button = self._driver.find_element(By.XPATH, self.FACEBOOK_BUTTON)
         self._linkedin_button = self._driver.find_element(By.XPATH, self.LINKEDIN_BUTTON)
+
+    def get_header_text(self):
+        return self._header_text.text
 
     def click_on_cart_button(self):
         self._cart_button.click()
