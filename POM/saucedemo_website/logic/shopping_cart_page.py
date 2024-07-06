@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from base_page_app import BasePageApp
+from saucedemo_website.logic.base_page_app import BasePageApp
 
 
 class ShoppingCart(BasePageApp):
@@ -12,23 +12,27 @@ class ShoppingCart(BasePageApp):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._remove_backpack = self._driver.find_element(By.XPATH, self.REMOVE_BACKPACK)
-        self._remove_bike_light = self._driver.find_element(By.XPATH, self.REMOVE_BIKE_LIGHT)
-        self._remove_t_shirt = self._driver.find_element(By.XPATH, self.REMOVE_T_SHIRT)
-        self._item_name = self._driver.find_element(By.XPATH, self.ITEM_NAME)
+        self._remove_backpack = None
+        self._remove_bike_light = None
+        self._remove_t_shirt = None
+        self._item_name = None
         self._continue_shopping_button = self._driver.find_element(By.XPATH, self.CONTINUE_SHOPPING_BUTTON)
         self._checkout_button = self._driver.find_element(By.XPATH, self.CHECKOUT_BUTTON)
 
     def remove_backpack_from_cart(self):
+        self._remove_backpack = self._driver.find_element(By.XPATH, self.REMOVE_BACKPACK)
         self._remove_backpack.click()
 
     def remove_bike_light_from_cart(self):
+        self._remove_bike_light = self._driver.find_element(By.XPATH, self.REMOVE_BIKE_LIGHT)
         self._remove_bike_light.click()
 
     def remove_t_shirt_from_cart(self):
+        self._remove_t_shirt = self._driver.find_element(By.XPATH, self.REMOVE_T_SHIRT)
         self._remove_t_shirt.click()
 
     def click_on_item_name_link(self):
+        self._item_name = self._driver.find_element(By.XPATH, self.ITEM_NAME)
         self._item_name.click()
 
     def click_on_continue_shopping(self):
@@ -37,11 +41,7 @@ class ShoppingCart(BasePageApp):
     def click_on_checkout_button(self):
         self._checkout_button.click()
 
-    def remove_two_items_flow(self):
-        self.remove_backpack_from_cart()
-        self.remove_bike_light_from_cart()
-
-    def remove_three_items_flow(self):
+    def remove_three_items(self):
         self.remove_backpack_from_cart()
         self.remove_bike_light_from_cart()
         self.remove_t_shirt_from_cart()
