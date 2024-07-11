@@ -16,7 +16,13 @@ class TestLoginPage(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
 
-    def test_login_flow(self):
+    def test_correct_login_flow(self):
         login_page = LoginPage(self.driver)
         login_page.login_flow(self.config["email"], self.secret["password"])
-        self.assertTrue(self.driver.current_url, "https://app.asana.com/0/1207765960679171/list")
+        time.sleep(5)
+        self.assertEqual(self.driver.current_url, "https://app.asana.com/0/home/1207765960679158")
+
+    def test_wrong_login_flow(self):
+        login_page = LoginPage(self.driver)
+        login_page.login_flow(self.config["email"], self.secret["wrong_password"])
+        self.assertNotEqual(self.driver.current_url, "https://app.asana.com/0/home/1207765960679158")
