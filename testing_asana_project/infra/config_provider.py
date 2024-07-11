@@ -10,3 +10,11 @@ class ConfigProvider:
                 return json.load(f)
         except FileNotFoundError:
             print(f"File not found.")
+
+    @staticmethod
+    def load_secret_json():
+        try:
+            with open('../secret.json', 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            print(f"File not found.")
