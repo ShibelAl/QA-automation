@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -25,16 +27,15 @@ class LoginPage(BasePage):
         self._asana_continue_button.click()
 
     def fill_password_input(self, password):
-        self._asana_password_input = WebDriverWait(self._driver, 5).until(
+        WebDriverWait(self._driver, 5).until(
             EC.presence_of_element_located((By.XPATH, self.ASANA_PASSWORD_INPUT))
-        )
-        self._asana_password_input.send_keys(password)
+        ).send_keys(password)
+        # self._asana_password_input.send_keys(password)
 
     def click_on_login_button(self):
-        self._asana_login_button = WebDriverWait(self._driver, 5).until(
+        WebDriverWait(self._driver, 5).until(
             EC.element_to_be_clickable((By.XPATH, self.ASANA_LOGIN_BUTTON))
-        )
-        self._asana_login_button.click()
+        ).click()
 
     def login_flow(self, email, password):
         self.fill_email_input(email)
