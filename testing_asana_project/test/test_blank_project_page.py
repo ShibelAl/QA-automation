@@ -28,4 +28,4 @@ class TestNewProjectPage(unittest.TestCase):
     def test_header_project_name_appears(self):
         blank_project_page = BlankProjectPage(self.driver)
         blank_project_page.fill_project_name_field()
-        self.assertEqual(self.driver.current_url, "https://app.asana.com/0/projects/new")
+        self.assertTrue(blank_project_page.project_name_is_displayed())
