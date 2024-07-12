@@ -1,5 +1,9 @@
 import time
 import unittest
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 from logic.login_page import LoginPage
 from infra.config_provider import ConfigProvider
 from infra.browser_wrapper import BrowserWrapper
@@ -25,15 +29,13 @@ class TestDashboardPage(unittest.TestCase):
         # Arrange
         self.sidebar = SideBar(self.driver)
         self.sidebar.click_on_reporting_button()
-        time.sleep(2)
 
         self.reporting_page = ReportingPage(self.driver)
         self.reporting_page.go_to_dashboard_page()
-        time.sleep(2)
 
         self.dashboard_page = DashboardPage(self.driver)
         self.dashboard_page.add_two_charts_flow()
-        time.sleep(2)
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
         # Capture initial state
         initial_left_chart_location = self.dashboard_page.get_chart_location('left')
@@ -41,15 +43,12 @@ class TestDashboardPage(unittest.TestCase):
 
         # Act
         self.dashboard_page.drag_left_chart_to_right()
-        time.sleep(2)  # Allow time for the action to complete and UI to update
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
         # Capture final state
-        final_left_chart_location = self.dashboard_page.get_chart_location('right')
-        final_right_chart_location = self.dashboard_page.get_chart_location('left')
+        final_left_chart_location = self.dashboard_page.get_chart_location('left')
+        final_right_chart_location = self.dashboard_page.get_chart_location('right')
 
         # Assert
-        assert final_left_chart_location == initial_right_chart_location, ("The left chart was not dragged to the right"
-                                                                           " chart's position.")
-        assert final_right_chart_location == initial_left_chart_location, ("The right chart was not moved to the left "
-                                                                           "chart's position.")
-
+        self.assertDictEqual(final_left_chart_location, initial_right_chart_location)
+        self.assertDictEqual(final_right_chart_location, initial_left_chart_location)

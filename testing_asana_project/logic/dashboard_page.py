@@ -12,8 +12,8 @@ class DashboardPage(BasePage):
     CREATE_BUTTON_IN_ADD_CHART_POPUP = '//div[text() = "Create"]'
     PROJECTS_BY_STATUS = '(//div[@class = "CardGalleryCategory-card"][3])'
     ADD_CHART_BUTTON = '//div[contains(@class, "PageToolbarStructure")]//div[@role = "button"]'
-    LEFT_CHART_HEADER_TITLE_WRAPPER = '(//div[@class = "BaseChartHeader-titleWrapper"])[1]'
-    RIGHT_CHART_HEADER_TITLE_WRAPPER = '(//div[@class = "BaseChartHeader-titleWrapper"])[2]'
+    LEFT_CHART_HEADER_TITLE_WRAPPER = '//h6[contains(text(), "Incomplete tasks")]'
+    RIGHT_CHART_HEADER_TITLE_WRAPPER = '//h6[contains(text(), "Projects by project")]'
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -42,13 +42,13 @@ class DashboardPage(BasePage):
 
     def add_two_charts_flow(self):
         self.click_on_incomplete_tasks_green_chart()
-        time.sleep(2)
+        time.sleep(1)
         self.click_on_create_button_in_add_chart_popup()
-        time.sleep(2)
+        time.sleep(1)
         self.click_on_add_chart_button()
-        time.sleep(2)
+        time.sleep(1)
         self.click_on_projects_by_status()
-        time.sleep(2)
+        time.sleep(1)
         self.click_on_create_button_in_add_chart_popup()
 
     def drag_left_chart_to_right(self):
@@ -60,7 +60,7 @@ class DashboardPage(BasePage):
         )
         ac = ActionChains(self._driver)
         ac.drag_and_drop(self._left_chart_header, self._right_chart_header).perform()
-        time.sleep(5)
+        time.sleep(1)
 
     def get_chart_location(self, chart_position):
         if chart_position == 'left':
