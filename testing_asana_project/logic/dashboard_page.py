@@ -1,5 +1,4 @@
 import time
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
@@ -21,26 +20,44 @@ class DashboardPage(BasePage):
         self._right_chart_header = None
 
     def click_on_incomplete_tasks_green_chart(self):
+        """
+        Clicks on the "Incomplete tasks by project" button/picture.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.INCOMPLETE_TASKS_GREEN_CHART))
         ).click()
 
     def click_on_create_button_in_add_chart_popup(self):
+        """
+        Clicks on "Create" button in add to chart pop-up.
+        This button appears after pressing on "Add chart".
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.CREATE_BUTTON_IN_ADD_CHART_POPUP))
         ).click()
 
     def click_on_add_chart_button(self):
+        """
+        Clicks on add chart button in the dashboard page.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.ADD_CHART_BUTTON))
         ).click()
 
     def click_on_projects_by_status(self):
+        """
+        Clicks on "Projects by status" button/picture (circular chart).
+        This button appears after pressing on "Add chart"
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.PROJECTS_BY_STATUS))
         ).click()
 
     def add_two_charts_flow(self):
+        """
+        This function adds the "Incomplete tasks by project" green chart, and then adds a new
+        chart, that is the "Projects by status" circular chart.
+        """
         self.click_on_incomplete_tasks_green_chart()
         time.sleep(1)
         self.click_on_create_button_in_add_chart_popup()
@@ -52,6 +69,10 @@ class DashboardPage(BasePage):
         self.click_on_create_button_in_add_chart_popup()
 
     def drag_left_chart_to_right(self):
+        """
+        This function drags the left chart (green chart) and drops it in the right
+        (on the circular chart). It uses the ActionChains module.
+        """
         self._left_chart_header = WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.LEFT_CHART_HEADER_TITLE_WRAPPER))
         )
@@ -63,6 +84,12 @@ class DashboardPage(BasePage):
         time.sleep(1)
 
     def get_chart_location(self, chart_position):
+        """
+        :param chart_position: legally, can contain 'left' or 'right', and if not, the function
+        raises a value error.
+        :return: the location of the chart_position parameter. It takes the location
+        from the "location" attribute, as a dictionary that consists of x and y coordinates.
+        """
         if chart_position == 'left':
             chart_element = self._driver.find_element(By.XPATH, self.LEFT_CHART_HEADER_TITLE_WRAPPER)
         elif chart_position == 'right':

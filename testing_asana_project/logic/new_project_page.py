@@ -14,4 +14,9 @@ class NewProjectPage(BasePage):
         )
 
     def click_on_blank_project_button(self):
+        """
+        Clicks on the "Blank project" button.
+        """
         self._blank_project_button.click()
+        WebDriverWait(self._driver, 5).until(
+            EC.url_to_be("https://app.asana.com/0/projects/new/blank"))

@@ -20,30 +20,54 @@ class BasePageApp(BasePage):
         self._pop_up_after_pressing_create = None
 
     def click_on_create_button(self):
+        """
+        Clicks on Create button.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.CREATE_BUTTON))
         ).click()
 
     def click_on_project_button_in_create(self):
+        """
+        Clicks on project button. This button appears after pressing
+        on Create.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.PROJECT_BUTTON_IN_CREATE))
         ).click()
 
     def click_on_message_button_in_create(self):
+        """
+        Click on message button. This button appears after pressing
+        on Create.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.MESSAGE_BUTTON_IN_CREATE))
         ).click()
 
     def open_new_project(self):
+        """
+        Clicks on Create and then on project, this function opens a new project.
+        """
         self.click_on_create_button()
         self.click_on_project_button_in_create()
 
     def pop_up_after_pressing_create_is_displayed(self):
+        """
+        This function checks if the pop-up that has 5 options (Task, Project, Portfolio...)
+        appears after pressing on Create.
+        :return: True, if the small pop-up appears after pressing on Create. False otherwise.
+        """
         return WebDriverWait(self._driver, 10).until(
             EC.visibility_of_element_located((By.XPATH, self.POP_UP_AFTER_PRESSING_CREATE))
         ).is_displayed()
 
     def blank_project_button_is_displayed(self):
+        """
+        This function checks if the "Blank project" button in displayed.
+        This button should appear after pressing on Create -> Project.
+        :return: True, if the "Blank project" button appears, False otherwise.
+        """
         return WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.BLANK_PROJECT_BUTTON))
         ).is_displayed()

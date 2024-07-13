@@ -14,5 +14,8 @@ class SideBar(BasePage):
         )
 
     def click_on_reporting_button(self):
+        """
+        This function clicks on the "Reporting" button that appears in the sidebar.
+        """
         self._reporting_button.click()
     

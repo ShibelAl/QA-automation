@@ -10,20 +10,27 @@ class ReportingPage(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._create_button = None
-        self._dashboard_button = None
 
     def click_on_create_button(self):
+        """
+        Clicks on "Create" button to create a new dashboard.
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.CREATE_BUTTON))
         ).click()
-        # self._create_button.click()
 
     def click_on_dashboard_button(self):
+        """
+        Clicks on "Dashboard" button. This button appears after pressing on "Create".
+        """
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.DASHBOARD_BUTTON_IN_CREATE))
         ).click()
 
     def go_to_dashboard_page(self):
+        """
+        Goes to dashboard page, the page that contains all the charts the user have picked.
+        First it clicks on "Create" and then it clicks on "Dashboard".
+        """
         self.click_on_create_button()
         self.click_on_dashboard_button()
