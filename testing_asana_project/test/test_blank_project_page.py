@@ -34,11 +34,11 @@ class TestNewProjectPage(unittest.TestCase):
 
     def test_header_project_name_appears(self):
         """
-        This function tests if the project name appears in the project template.
+        This function tests if the project name appears in the project template header.
         """
         # Arrange
         blank_project_page = BlankProjectPage(self.driver)
         # Act
-        blank_project_page.fill_project_name_field()
+        blank_project_page.fill_project_name_input()
         # Assert
         self.assertTrue(blank_project_page.project_name_is_displayed())
