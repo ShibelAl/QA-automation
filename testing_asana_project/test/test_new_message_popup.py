@@ -10,6 +10,11 @@ from infra.utils import Utils
 
 class TestNewMessagePopUp(unittest.TestCase):
     def setUp(self):
+        """
+        Sets up the testing environment, completes the login process to enter to the main page,
+        opens a new message pop-up and deletes the previous draft (if there was any).
+        Works automatically.
+        """
         self.browser = BrowserWrapper()
         self.config = ConfigProvider.load_config_json()
         self.secret = ConfigProvider.load_secret_json()
@@ -23,19 +28,26 @@ class TestNewMessagePopUp(unittest.TestCase):
         self.message_popup.close_draft_message()
 
     def tearDown(self):
+        """
+        Closes the browser after completing the test.
+        Works automatically.
+        """
         self.driver.quit()
 
     def test_sent_message_title_is_visible(self):
         """
         This function tests if the title in the message that has been sent is visible.
         """
+        # Arrange
         self.message_popup.add_message_receiver_email(self.config["email"])
         self.message_popup.fill_add_subject_field(Utils.generate_random_string())
         self.message_popup.fill_message_content(Utils.generate_random_string())
-        time.sleep(1)
+        time.sleep(1)  # Allow time for the action to complete and UI to update
         self.message_popup.click_on_send_button()
-        time.sleep(1)
+        time.sleep(1)  # Allow time for the action to complete and UI to update
+        # Act
         self.message_popup.click_on_view_message_link()
+        # Assert
         self.assertTrue(self.message_popup.view_message_title_is_visible())
 
     def test_sent_message_title_is_correct(self):
@@ -43,6 +55,7 @@ class TestNewMessagePopUp(unittest.TestCase):
         This function tests if the title of the message that has been sent is identical
         to the title that the user inserted when sending the message.
         """
+        # Arrange
         self.message_popup.add_message_receiver_email(self.config["email"])
         subject = Utils.generate_random_string()
         self.message_popup.fill_add_subject_field(subject)
@@ -50,5 +63,7 @@ class TestNewMessagePopUp(unittest.TestCase):
         time.sleep(1)
         self.message_popup.click_on_send_button()
         time.sleep(1)
+        # Act
         self.message_popup.click_on_view_message_link()
+        # Assert
         self.assertEqual(self.message_popup.view_message_title_text(), subject)
