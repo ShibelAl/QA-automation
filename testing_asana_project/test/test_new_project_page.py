@@ -1,9 +1,11 @@
+import logging
 import unittest
 from logic.login_page import LoginPage
 from infra.config_provider import ConfigProvider
 from infra.browser_wrapper import BrowserWrapper
 from logic.base_page_app import BasePageApp
 from logic.new_project_page import NewProjectPage
+from infra.logging_setup import LoggingSetup
 
 
 class TestNewProjectPage(unittest.TestCase):
@@ -34,6 +36,7 @@ class TestNewProjectPage(unittest.TestCase):
         Tests if the "blank project" button works when creating new project,
         asserting that the current url is the expected url after pressing the button.
         """
+        logging.info("Test blank project button - test started")
         # Arrange
         new_project_page = NewProjectPage(self.driver)
         # Act

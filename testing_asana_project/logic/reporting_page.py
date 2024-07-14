@@ -1,7 +1,10 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
+from infra.logging_setup import LoggingSetup
 
 
 class ReportingPage(BasePage):
@@ -34,3 +37,4 @@ class ReportingPage(BasePage):
         """
         self.click_on_create_button()
         self.click_on_dashboard_button()
+        logging.info("In dashboard page")

@@ -1,3 +1,4 @@
+import logging
 import time
 import unittest
 from infra.browser_wrapper import BrowserWrapper
@@ -6,6 +7,7 @@ from logic.login_page import LoginPage
 from logic.base_page_app import BasePageApp
 from logic.new_message_popup import NewMessagePopUp
 from infra.utils import Utils
+from infra.logging_setup import LoggingSetup
 
 
 class TestNewMessagePopUp(unittest.TestCase):
@@ -38,14 +40,13 @@ class TestNewMessagePopUp(unittest.TestCase):
         """
         This function tests if the title in the message that has been sent is visible.
         """
+        logging.info("Test sent message title is visible - test started")
         # Arrange
         self.message_popup.add_message_receiver_email(self.config["email"])
+        # Act
         self.message_popup.fill_add_subject_field(Utils.generate_random_string())
         self.message_popup.fill_message_content(Utils.generate_random_string())
-        time.sleep(1)  # Allow time for the action to complete and UI to update
         self.message_popup.click_on_send_button()
-        time.sleep(1)  # Allow time for the action to complete and UI to update
-        # Act
         self.message_popup.click_on_view_message_link()
         # Assert
         self.assertTrue(self.message_popup.view_message_title_is_visible())
@@ -55,15 +56,14 @@ class TestNewMessagePopUp(unittest.TestCase):
         This function tests if the title of the message that has been sent is identical
         to the title that the user inserted when sending the message.
         """
+        logging.info("Test sent message title is correct - test started")
         # Arrange
         self.message_popup.add_message_receiver_email(self.config["email"])
         subject = Utils.generate_random_string()
+        # Act
         self.message_popup.fill_add_subject_field(subject)
         self.message_popup.fill_message_content(Utils.generate_random_string())
-        time.sleep(1)
         self.message_popup.click_on_send_button()
-        time.sleep(1)
-        # Act
         self.message_popup.click_on_view_message_link()
         # Assert
         self.assertEqual(self.message_popup.view_message_title_text(), subject)

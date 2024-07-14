@@ -1,7 +1,10 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
+from infra.logging_setup import LoggingSetup
 
 
 class BasePageApp(BasePage):
@@ -13,11 +16,6 @@ class BasePageApp(BasePage):
 
     def __init__(self, driver):
         super().__init__(driver)
-        self._create_button = None
-        self._project_button_in_create = None
-        self._message_button_in_create = None
-        self._blank_project_button = None
-        self._pop_up_after_pressing_create = None
 
     def click_on_create_button(self):
         """
@@ -49,6 +47,7 @@ class BasePageApp(BasePage):
         """
         Clicks on Create and then on project, this function opens a new project.
         """
+        logging.info("Creating a new project, without specifying the project details")
         self.click_on_create_button()
         self.click_on_project_button_in_create()
 

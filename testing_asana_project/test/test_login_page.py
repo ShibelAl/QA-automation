@@ -1,3 +1,4 @@
+import logging
 import unittest
 from logic.login_page import LoginPage
 from infra.config_provider import ConfigProvider
@@ -5,6 +6,7 @@ from infra.browser_wrapper import BrowserWrapper
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions as EC
+from infra.logging_setup import LoggingSetup
 
 
 class TestLoginPage(unittest.TestCase):
@@ -31,6 +33,7 @@ class TestLoginPage(unittest.TestCase):
         This function tests if after inserting a correct email and password
         the main page of the website appears.
         """
+        logging.info("Test correct login flow - Test started")
         # Arrange
         login_page = LoginPage(self.driver)
         # Act
@@ -44,6 +47,7 @@ class TestLoginPage(unittest.TestCase):
         This function tests if when inserting a correct email and wrong password,
         then the login page prevents entering the website, as it should.
         """
+        logging.info("Test wrong password in login - test started")
         # Arrange
         login_page = LoginPage(self.driver)
         # Act
@@ -59,6 +63,7 @@ class TestLoginPage(unittest.TestCase):
         This function tests if when inserting a wrong email, then
         the login page prevents entering the website, as it should.
         """
+        logging.info("Test wrong email in login - test started")
         # Arrange
         login_page = LoginPage(self.driver)
         # Act

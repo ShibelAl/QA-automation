@@ -1,3 +1,4 @@
+import logging
 import time
 import unittest
 from logic.login_page import LoginPage
@@ -6,6 +7,7 @@ from infra.browser_wrapper import BrowserWrapper
 from logic.sidebar import SideBar
 from logic.reporting_page import ReportingPage
 from logic.dashboard_page import DashboardPage
+from infra.logging_setup import LoggingSetup
 
 
 class TestDashboardPage(unittest.TestCase):
@@ -39,14 +41,15 @@ class TestDashboardPage(unittest.TestCase):
         page, it uses the "get_chart_location" function that returns the
         location of the element (chart) in the page.
         """
+        logging.info("Test drag and drop feature - test started")
         # Arrange
         self.dashboard_page = DashboardPage(self.driver)
         self.dashboard_page.add_two_charts_flow()
-        time.sleep(1)  # Allow time for the action to complete and UI to update
 
         # Capture initial state
         initial_left_chart_location = self.dashboard_page.get_chart_location('left')
         initial_right_chart_location = self.dashboard_page.get_chart_location('right')
+        time.sleep(1)
 
         # Act
         self.dashboard_page.drag_left_chart_to_right()

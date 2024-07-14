@@ -1,3 +1,4 @@
+import logging
 import unittest
 from logic.login_page import LoginPage
 from infra.config_provider import ConfigProvider
@@ -5,6 +6,7 @@ from infra.browser_wrapper import BrowserWrapper
 from logic.base_page_app import BasePageApp
 from logic.new_project_page import NewProjectPage
 from logic.blank_project_page import BlankProjectPage
+from infra.logging_setup import LoggingSetup
 
 
 class TestNewProjectPage(unittest.TestCase):
@@ -36,6 +38,7 @@ class TestNewProjectPage(unittest.TestCase):
         """
         This function tests if the project name appears in the project template header.
         """
+        logging.info("Test header project name - test started")
         # Arrange
         blank_project_page = BlankProjectPage(self.driver)
         # Act

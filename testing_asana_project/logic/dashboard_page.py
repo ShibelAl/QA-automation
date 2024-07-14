@@ -1,9 +1,11 @@
+import logging
 import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
+from infra.logging_setup import LoggingSetup
 
 
 class DashboardPage(BasePage):
@@ -58,15 +60,13 @@ class DashboardPage(BasePage):
         This function adds the "Incomplete tasks by project" green chart, and then adds a new
         chart, that is the "Projects by status" circular chart.
         """
+        logging.info("Adding two charts")
         self.click_on_incomplete_tasks_green_chart()
-        time.sleep(1)
         self.click_on_create_button_in_add_chart_popup()
-        time.sleep(1)
         self.click_on_add_chart_button()
-        time.sleep(1)
         self.click_on_projects_by_status()
-        time.sleep(1)
         self.click_on_create_button_in_add_chart_popup()
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
     def drag_left_chart_to_right(self):
         """
@@ -81,7 +81,7 @@ class DashboardPage(BasePage):
         )
         ac = ActionChains(self._driver)
         ac.drag_and_drop(self._left_chart_header, self._right_chart_header).perform()
-        time.sleep(1)
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
     def get_chart_location(self, chart_position):
         """

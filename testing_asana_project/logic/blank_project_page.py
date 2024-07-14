@@ -1,8 +1,11 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
 from infra.utils import Utils
+from infra.logging_setup import LoggingSetup
 
 
 class BlankProjectPage(BasePage):
@@ -59,5 +62,6 @@ class BlankProjectPage(BasePage):
         """
         This function fills the project name field, and then clicks on "Create project"
         """
+        logging.info("Creating a project")
         self.fill_project_name_input(name)
         self.click_on_create_project()

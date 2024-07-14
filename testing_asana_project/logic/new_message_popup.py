@@ -1,3 +1,4 @@
+import logging
 import time
 import selenium.common.exceptions
 from selenium.webdriver import Keys
@@ -5,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from logic.base_page_app import BasePageApp
+from infra.logging_setup import LoggingSetup
 
 
 class NewMessagePopUp(BasePageApp):
@@ -50,6 +52,7 @@ class NewMessagePopUp(BasePageApp):
         WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.MESSAGE_BODY))
         ).send_keys(message)
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
     def click_on_send_button(self):
         """
@@ -58,6 +61,8 @@ class NewMessagePopUp(BasePageApp):
         WebDriverWait(self._driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.SEND_BUTTON))
         ).click()
+        logging.info("clicked on send button")
+        time.sleep(1)  # Allow time for the action to complete and UI to update
 
     def click_on_view_message_link(self):
         """
@@ -67,6 +72,7 @@ class NewMessagePopUp(BasePageApp):
         WebDriverWait(self._driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.VIEW_MESSAGE_LINK))
         ).click()
+        logging.info("clicked on view message link")
 
     def view_message_title_is_visible(self):
         """
@@ -118,4 +124,5 @@ class NewMessagePopUp(BasePageApp):
             ).click()
             self.click_on_to_field_in_message_popup()
         except selenium.common.exceptions.TimeoutException:
+            logging.info("There is no draft messages")
             pass

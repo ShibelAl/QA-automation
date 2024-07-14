@@ -1,7 +1,10 @@
+import logging
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
+from infra.logging_setup import LoggingSetup
 
 
 class LoginPage(BasePage):
@@ -54,6 +57,7 @@ class LoginPage(BasePage):
         :param email: a string that represents an email.
         :param password: a string that represents the password for the email.
         """
+        logging.info("Logging in to the website")
         self.fill_email_input(email)
         self.click_on_continue_button()
         self.fill_password_input(password)
