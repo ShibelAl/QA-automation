@@ -66,7 +66,7 @@ class DashboardPage(BasePage):
         self.click_on_add_chart_button()
         self.click_on_projects_by_status()
         self.click_on_create_button_in_add_chart_popup()
-        time.sleep(1)  # Allow time for the action to complete and UI to update
+        time.sleep(2)  # Allow time for the action to complete and UI to update
 
     def drag_left_chart_to_right(self):
         """
@@ -96,5 +96,6 @@ class DashboardPage(BasePage):
             chart_element = self._driver.find_element(By.XPATH, self.RIGHT_CHART_HEADER_TITLE_WRAPPER)
         else:
             raise ValueError("Invalid chart position specified. Use 'left' or 'right'.")
+        time.sleep(1)
 
         return chart_element.location

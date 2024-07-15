@@ -8,6 +8,7 @@ from logic.sidebar import SideBar
 from logic.reporting_page import ReportingPage
 from logic.dashboard_page import DashboardPage
 from infra.logging_setup import LoggingSetup
+from logic.chart_location_options import ChartLocationOptions
 
 
 class TestDashboardPage(unittest.TestCase):
@@ -47,17 +48,15 @@ class TestDashboardPage(unittest.TestCase):
         self.dashboard_page.add_two_charts_flow()
 
         # Capture initial state
-        initial_left_chart_location = self.dashboard_page.get_chart_location('left')
-        initial_right_chart_location = self.dashboard_page.get_chart_location('right')
-        time.sleep(1)
+        initial_left_chart_location = self.dashboard_page.get_chart_location(ChartLocationOptions.LEFT.value)
+        initial_right_chart_location = self.dashboard_page.get_chart_location(ChartLocationOptions.RIGHT.value)
 
         # Act
         self.dashboard_page.drag_left_chart_to_right()
-        time.sleep(1)  # Allow time for the action to complete and UI to update
 
         # Capture final state
-        final_left_chart_location = self.dashboard_page.get_chart_location('left')
-        final_right_chart_location = self.dashboard_page.get_chart_location('right')
+        final_left_chart_location = self.dashboard_page.get_chart_location(ChartLocationOptions.LEFT.value)
+        final_right_chart_location = self.dashboard_page.get_chart_location(ChartLocationOptions.RIGHT.value)
 
         # Assert
         self.assertDictEqual(final_left_chart_location, initial_right_chart_location)
