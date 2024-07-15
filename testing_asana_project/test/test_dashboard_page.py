@@ -1,5 +1,4 @@
 import logging
-import time
 import unittest
 from logic.login_page import LoginPage
 from infra.config_provider import ConfigProvider
@@ -7,8 +6,8 @@ from infra.browser_wrapper import BrowserWrapper
 from logic.sidebar import SideBar
 from logic.reporting_page import ReportingPage
 from logic.dashboard_page import DashboardPage
-from infra.logging_setup import LoggingSetup
 from logic.chart_location_options import ChartLocationOptions
+from infra.logging_setup import LoggingSetup
 
 
 class TestDashboardPage(unittest.TestCase):
