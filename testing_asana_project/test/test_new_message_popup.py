@@ -6,7 +6,7 @@ from logic.login_page import LoginPage
 from logic.base_page_app import BasePageApp
 from logic.new_message_popup import NewMessagePopUp
 from infra.utils import Utils
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestNewMessagePopUp(unittest.TestCase):

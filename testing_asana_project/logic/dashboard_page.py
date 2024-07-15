@@ -4,11 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
-from infra.base_page import BasePage
-from infra.logging_setup import LoggingSetup
+from logic.base_page_app import BasePageApp
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
-class DashboardPage(BasePage):
+class DashboardPage(BasePageApp):
     INCOMPLETE_TASKS_GREEN_CHART = '//h5[contains(text(), "Incomplete tasks")]'
     CREATE_BUTTON_IN_ADD_CHART_POPUP = '//div[text() = "Create"]'
     PROJECTS_BY_STATUS = '(//div[@class = "CardGalleryCategory-card"][3])'

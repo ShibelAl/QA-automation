@@ -5,7 +5,7 @@ from infra.config_provider import ConfigProvider
 from infra.browser_wrapper import BrowserWrapper
 from logic.base_page_app import BasePageApp
 from logic.new_project_page import NewProjectPage
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestNewProjectPage(unittest.TestCase):

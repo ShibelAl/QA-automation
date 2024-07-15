@@ -4,7 +4,7 @@ from infra.browser_wrapper import BrowserWrapper
 from infra.config_provider import ConfigProvider
 from logic.login_page import LoginPage
 from logic.base_page_app import BasePageApp
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestBasePageApp(unittest.TestCase):
@@ -15,7 +15,6 @@ class TestBasePageApp(unittest.TestCase):
         and completes the login process to enter to the main page.
         Works automatically.
         """
-        logger_setup = LoggingSetup()
         logging.info("Base page app - Test Started")
         self.browser = BrowserWrapper()
         self.config = ConfigProvider.load_config_json()

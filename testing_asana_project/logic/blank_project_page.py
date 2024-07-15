@@ -4,7 +4,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from infra.base_page import BasePage
 from infra.utils import Utils
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class BlankProjectPage(BasePage):

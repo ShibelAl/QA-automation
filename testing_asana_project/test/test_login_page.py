@@ -6,7 +6,7 @@ from infra.browser_wrapper import BrowserWrapper
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import *
 from selenium.webdriver.support import expected_conditions as EC
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestLoginPage(unittest.TestCase):

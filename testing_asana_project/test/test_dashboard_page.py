@@ -7,7 +7,7 @@ from logic.sidebar import SideBar
 from logic.reporting_page import ReportingPage
 from logic.dashboard_page import DashboardPage
 from logic.chart_location_options import ChartLocationOptions
-from infra.logging_setup import LoggingSetup
+from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestDashboardPage(unittest.TestCase):
