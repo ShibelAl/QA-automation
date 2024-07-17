@@ -1,5 +1,5 @@
 {
   "browser" : "Chrome",
-  "url" : "https://deckofcardsapi.com/api/deck",
-  "deck_count" : 1
+  "base_url" : "https://deckofcardsapi.com/api/deck",
+  "default_deck_count" : 1
 }
