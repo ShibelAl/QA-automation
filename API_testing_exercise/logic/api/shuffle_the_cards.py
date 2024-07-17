@@ -2,7 +2,7 @@ from infra.api.api_wrapper import APIWrapper
 from infra.config_provider import ConfigProvider
 
 
-class APIShuffleTheCards:
+class ShuffleTheCards:
     def __init__(self, request: APIWrapper):
         self._request = request
         self._config = ConfigProvider().load_config_json()
