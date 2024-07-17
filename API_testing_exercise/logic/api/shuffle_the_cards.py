@@ -14,4 +14,4 @@ class ShuffleTheCards:
         :return: Response: The response from the API.
         """
         return self._request.get_request(
-            f"{self._config['url']}/new/shuffle/?deck_count={self._config['deck_count']}")
+            f"{self._config['base_url']}/new/shuffle/?deck_count={self._config['default_deck_count']}")
