@@ -1,6 +1,6 @@
 import unittest
 from infra.api.api_wrapper import APIWrapper
-from logic.api.api_shuffle_the_cards import APIShuffleTheCards
+from logic.api.shuffle_the_cards import APIShuffleTheCards
 from infra.config_provider import ConfigProvider
 
 
