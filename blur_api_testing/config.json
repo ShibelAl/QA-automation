@@ -1,11 +1,46 @@
 {
   "browser": "Chrome",
   "base_url": "https://blur.p.rapidapi.com",
+
+  "retrieve_authchallenge_endpoint" : "auth/challenge",
+  "retrieve_authchallenge_payload" : { "walletAddress": "0x0901104C53f6bc215204843fD33d62958A333DF8" },
+  "retrieve_authchallenge_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "blur.p.rapidapi.com",
+	"Content-Type": "application/json"
+  },
+
+  "retrieve_accesstoken_endpoint" : "auth/login",
+  "retrieve_accesstoken_payload": {
+	"message": "Sign in to Blur Challenge: 1943997ce21e7be9c4ec963651a2bd615ac2b0f5dc7121b116ed4115bd94ee83",
+	"walletAddress": "0x0901104c53f6bc215204843fd33d62958a327df8",
+	"expiresOn": "2022-11-02T13:51:01.327Z",
+	"hmac": "1943997ce21e7be9c4ec963651a2bd615ac2b0d3dc7121b006ed4115bd94ee83",
+	"signature": "signature"
+  },
+  "retrieve_accesstoken_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "blur.p.rapidapi.com",
+	"Content-Type": "application/json"
+  },
+
   "retrieve_executable_bids_endpoint" : "v1/collections/valhalla/executable-bids",
   "header_1" : {
 	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
 	"x-rapidapi-host": "blur.p.rapidapi.com"
   },
+
   "retrieve_user_bids_endpoint" : "v1/collection-bids/user/%7BwalletAddress%7D",
-  "retrieve_user_bids_querystring" : "{'filters':'{'criteria':{'type':'ALL'}}'}"
+  "retrieve_user_bids_querystring" : "{'filters':'{'criteria':{'type':'ALL'}}'}",
+
+  "bids_cancel_endpoint" : "v1/collection-bids/cancel",
+  "bids_cancel_payload" : {
+	"prices": ["0.05"],
+	"contractAddress": "0x306b1ea3ecdf94ab739f1910bbda052ed4a9f949"
+  },
+  "bids_cancel_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "blur.p.rapidapi.com",
+	"Content-Type": "application/json"
+  }
 }
