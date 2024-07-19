@@ -1,0 +1,10 @@
+{
+  "browser": "Chrome",
+  "base_url": "https://blur.p.rapidapi.com",
+  "executable_bids_endpoint" : "v1/collections/valhalla/executable-bids",
+  "header" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "blur.p.rapidapi.com"
+  },
+  "query_string" : "{'filters':'{}'}"
+}
