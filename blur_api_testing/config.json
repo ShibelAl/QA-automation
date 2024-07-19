@@ -1,10 +1,11 @@
 {
   "browser": "Chrome",
   "base_url": "https://blur.p.rapidapi.com",
-  "executable_bids_endpoint" : "v1/collections/valhalla/executable-bids",
-  "header" : {
+  "retrieve_executable_bids_endpoint" : "v1/collections/valhalla/executable-bids",
+  "header_1" : {
 	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
 	"x-rapidapi-host": "blur.p.rapidapi.com"
   },
-  "query_string" : "{'filters':'{}'}"
+  "retrieve_user_bids_endpoint" : "v1/collection-bids/user/%7BwalletAddress%7D",
+  "retrieve_user_bids_querystring" : "{'filters':'{'criteria':{'type':'ALL'}}'}"
 }
