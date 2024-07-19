@@ -12,4 +12,4 @@ class Bids:
 
     def get_retrieve_user_bids(self):
         url = f"{self._config['base_url']}/{self._config['retrieve_user_bids_endpoint']}"
-        return self._request.get_request(url, self._config['header_1'])
+        return self._request.get_request(url, self._config['header_1'], self._config['retrieve_user_bids_querystring'])
