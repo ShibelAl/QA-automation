@@ -1,0 +1,15 @@
+{
+  "browser": "Chrome",
+  "base_url": "https://linkedin-api8.p.rapidapi.com",
+
+  "get_company_jobs_endpoint" : "company-jobs",
+  "get_company_jobs_payload" : {
+	"companyIds": [5383240, 2382910],
+	"page": 1
+  },
+  "get_company_jobs_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com",
+	"Content-Type": "application/json"
+  }
+}
