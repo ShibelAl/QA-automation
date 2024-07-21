@@ -6,10 +6,14 @@ class Bids:
         self._request = request
         self._config = ConfigProvider().load_config_json()
 
-    def post_retrieve_authchallenge(self):
+    def retrieve_authchallenge(self):
         url = f"{self._config['base_url']}/{self._config['retrieve_authchallenge_endpoint']}"
-        return self._request.post_request(url, self._config['retrieve_authchallenge_payload'],
-                                          self._config['retrieve_authchallenge_headers'])
+        return self._request.post_request(url, self._config['retrieve_authchallenge_headers'],
+                                          self._config['retrieve_authchallenge_payload'])
+
+    # def retrieve_accesstoken(self):
+        # here i need a private key to retrieve the accesstoken, and since I don't have one,
+        # I picked another api to work on, it's LinkedIn api.
 
     def get_retrieve_executable_bids(self):
         url = f"{self._config['base_url']}/{self._config['retrieve_executable_bids_endpoint']}"
