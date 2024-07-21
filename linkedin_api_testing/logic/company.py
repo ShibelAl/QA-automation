@@ -29,7 +29,7 @@ class Company:
         url = f"{self._config['base_url']}/{self._config['get_company_jobs_endpoint']}"
         return self._request.post_request(url, self._config['get_company_jobs_headers'], comp_job)
 
-    def get_company_jobs_as_dictionary(self):
+    def get_company_object(self):
         """
         Creates a dictionary payload to retrieve company jobs.
 
@@ -46,7 +46,7 @@ class Company:
 
         :return: A dictionary where keys are job IDs and values are the last segments of URLs.
         """
-        company_job_response_json = self.get_company_job_by_body(self.get_company_jobs_as_dictionary()).json()
+        company_job_response_json = self.get_company_job_by_body(self.get_company_object()).json()
 
         # Making the dictionary by iterating on each item (['items'] is a list of dicts, so each item is a dictionary)
         # by doing item['url'].split('/')[-1] i'm accessing the last element in the url, which is the id in the url.
@@ -67,3 +67,27 @@ class Company:
         if non_identical_pairs_list:
             return True
         return False
+
+    def has_all_required_fields(self):
+        """
+        Checks if all jobs retrieved from the API response contain all required fields.
+
+        This method performs the following steps:
+        1. Calls the API to get the company job data.
+        2. Extracts the list of jobs from the API response.
+        3. Retrieves the list of required fields from the configuration.
+        4. Iterates through each job to ensure all required fields are present.
+        5. Returns True if all jobs contain all required fields; otherwise, returns False.
+
+        :return: bool - True if all jobs contain all required fields, False otherwise.
+        """
+        company_job_response_json = self.get_company_job_by_body(self.get_company_object()).json()
+        jobs = company_job_response_json['data']['items']
+
+        required_fields = self._config['job_fields']
+
+        for job in jobs:
+            for field in required_fields:
+                if field not in job:
+                    return False
+        return True

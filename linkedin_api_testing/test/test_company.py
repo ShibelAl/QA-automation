@@ -40,6 +40,35 @@ class TestCompany(unittest.TestCase):
         self.assertIsInstance(company_jobs_body['data'], dict)
         self.assertIsInstance(company_jobs_body['data']['items'], list)
 
+    def test_website_page_is_not_empty(self):
+        """
+        Tests that the company jobs page contains at least one job.
+
+        :raises AssertionError: If the response status code is not 200 or the job
+        list is empty.
+        """
+        # Act
+        response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
+        company_jobs_data = response.json()["data"]["items"]
+
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(len(company_jobs_data) > 0)
+
+    def test_each_job_has_all_fields(self):
+        """
+        Verify that each job in the API response includes all required fields.
+
+        :raises AssertionError: If the response status code is not 200 or if any job is missing required fields.
+        """
+        # Act
+        response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
+        company_jobs_data = response.json()["data"]["items"]
+        each_job_has_all_fields = Company(self._api_request).has_all_required_fields()
+        # Assert
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(each_job_has_all_fields)
+
     def test_job_url_goes_to_correct_job_id(self):
         """
         Test to verify that job URLs correspond to the correct job IDs.
