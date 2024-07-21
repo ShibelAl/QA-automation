@@ -11,5 +11,10 @@
 	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
 	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com",
 	"Content-Type": "application/json"
-  }
+  },
+
+  "job_fields" : [
+            "id", "title", "url", "referenceId", "posterId",
+            "company", "location", "type", "postDate", "postAt", "postedTimestamp"
+  ]
 }
