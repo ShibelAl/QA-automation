@@ -10,19 +10,6 @@ class TestShuffleTheCards(unittest.TestCase):
         self._config = ConfigProvider.load_config_json()
         self._api_request = APIWrapper()
 
-    def test_retrieve_authchallenge(self):
-        """
-        POST request test.
-
-        Temporarily, this function just prints the result of the api request, website issue.
-        """
-        retrieve_authchallenge = Bids(self._api_request).post_retrieve_authchallenge().json()
-        print(retrieve_authchallenge)
-
-    # def test_retrieve_accesstoken(self):
-    #     retrieve_accesstoken = Bids(self._api_request).post_retrieve_accesstoken().json()
-    #     print(retrieve_accesstoken)
-
     def test_correct_response_after_retrieving_executive_bid(self):
         """
         GET request test.
@@ -59,13 +46,3 @@ class TestShuffleTheCards(unittest.TestCase):
         user_bids_body = Bids(self._api_request).get_retrieve_user_bids().json()
         # Assert
         self.assertEqual(user_bids_body['statusCode'], 401)
-
-    # def test_cancelling_bids(self):
-    #     """
-    #     POST request test.
-    #
-    #     Temporarily, this function doesn't work.
-    #     """
-    #     cancel_bids_body = Bids(self._api_request).post_bids_cancel().json()
-    #     print(cancel_bids_body)
-
