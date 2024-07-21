@@ -26,9 +26,10 @@
 
   "retrieve_executable_bids_endpoint" : "v1/collections/valhalla/executable-bids",
   "header_1" : {
-	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-key": "28471e749amsh5a2b7584a03b183p14770cjsna9b3484807a8",
 	"x-rapidapi-host": "blur.p.rapidapi.com"
   },
+  "expected_price": "0.08",
 
   "retrieve_user_bids_endpoint" : "v1/collection-bids/user/%7BwalletAddress%7D",
   "retrieve_user_bids_querystring" : "{'filters':'{'criteria':{'type':'ALL'}}'}",
