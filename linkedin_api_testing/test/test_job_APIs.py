@@ -8,11 +8,14 @@ class TestCompany(unittest.TestCase):
 
     def setUp(self):
         """
-        Set up the test environment by loading the configuration and initializing the API wrapper.
+        Set up the test environment by loading the configuration and initializing the API wrapper,
+        and then making a JobAPIs object, its API response and its json body.
         """
         self._config = ConfigProvider.load_config_json()
         self._api_request = APIWrapper()
         self.job = JobAPIs(self._api_request)
+        self.response = self.job.search_jobs()
+        self.response_body = self.response.json()
 
     def test_unique_job_ids(self):
         """
@@ -23,10 +26,7 @@ class TestCompany(unittest.TestCase):
           the number of unique IDs (using a set).
         """
         # Act
-        response = self.job.search_jobs()
-        response_body = response.json()
-        job_ids_list = self.job.list_of_job_ids(response_body)
-        print(response_body)
+        job_ids_list = self.job.list_of_job_ids(self.response_body)
         # Assert
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(self.response.status_code, 200)
         self.assertEqual(len(job_ids_list), len(set(job_ids_list)))
