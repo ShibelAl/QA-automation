@@ -14,10 +14,20 @@ class ProfileAPIs:
 
     def get_profile_data_by_url(self):
         """
-        Constructs the URL for searching jobs and makes a GET request.
+        Makes the URL for a profile and makes a GET request.
 
-        :return: (dict) The response from the GET request to the profile data endpoint.
+        :return: (dict) The response from the GET request to the profile link endpoint.
         """
         url = f"{self._config['base_url']}/{self._config['get_profile_data_by_url_endpoint']}"
         return self._request.get_request(url, self._config['get_profile_data_by_url_headers'],
                                          self._config['get_profile_data_by_url_querystring'])
+
+    def get_profile_data_and_connections_follower_count(self):
+        """
+        Makes the URL for a profile and makes a GET request.
+
+        :return: (dict) The response from the GET request to the profile data link endpoint.
+        """
+        url = f"{self._config['base_url']}/{self._config['get_profile_data_and_connections_follower_count_endpoint']}"
+        return self._request.get_request(url, self._config['get_profile_data_and_connections_follower_count_headers'],
+                                         self._config['get_profile_data_and_connections_follower_count_querystring'])

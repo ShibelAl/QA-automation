@@ -22,7 +22,6 @@ class TestCompany(unittest.TestCase):
 
         - Asserts that the response status code is 200.
         - Asserts that the user data is equal to the expected data
-        :return:
         """
         # Act
         response_body = self.response.json()
@@ -39,4 +38,16 @@ class TestCompany(unittest.TestCase):
         self.assertEqual(response_body['summary'], self._config['summary'])
         self.assertEqual(response_body['headline'], self._config['headline'])
 
+    def test_specific_fields_in_the_API_response(self):
+        """
+        Tests specific fields in the JSON response:
+        username, fieldOfStudy and degree.
 
+        Uses the function "get_profile_data_and_connections_follower_count" in logic-profile_APIs.
+        """
+        # Act
+        response_body = self.response.json()
+        # Assert
+        self.assertEqual(response_body['username'], self._config['username'])
+        self.assertEqual(response_body['educations'][0]['fieldOfStudy'], self._config['fieldOfStudy'])
+        self.assertEqual(response_body['educations'][0]['degree'], self._config['degree'])
