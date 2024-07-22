@@ -69,5 +69,13 @@
   },
   "fieldOfStudy": "Computer Science",
   "degree": "Bachelor's degree",
-  "follower": 2
+  "follower": 2,
+
+  "find_email_address_endpoint" : "linkedin-to-email",
+  "find_email_address_querystring" : {"url":"https://www.linkedin.com/in/tzahi-anidgar-b8947b255/"},
+  "find_email_address_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
+  },
+  "emails" : null
 }
