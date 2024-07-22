@@ -35,5 +35,12 @@
 	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
 	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com",
 	"Content-Type": "application/json"
+  },
+
+  "search_locations_endpoint" : "search-locations",
+  "search_locations_querystring" : {"keyword":"berlin"},
+  "search_locations_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
   }
 }
