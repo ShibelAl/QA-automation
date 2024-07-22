@@ -26,8 +26,8 @@ class Post:
     def is_all_jobs_ordered_from_new_to_old(json_response):
         """
         Checks if the jobs in the JSON response are ordered from newest to oldest based on their posted dates.
-        :param json_response:
-        :return:
+        :param json_response: the json body of the API response
+        :return: True if the jobs dates are sorted from the newest job to the oldest.
         """
         try:
             items = json_response['data']['items']
