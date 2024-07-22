@@ -5,7 +5,7 @@ class JobAPIs:
 
     def __init__(self, request):
         """
-        Initializes the Company class with a request object and loads configuration.
+        Initializes the JobAPIs class with a request object and loads configuration.
 
         :param request: The request object to handle HTTP requests.
         """
