@@ -25,7 +25,6 @@ class TestCompany(unittest.TestCase):
         - Asserts that all location names contain 'Berlin'.
         """
         # Act
-        print(self.response_body)
         all_names_contain_berlin = Location(self._api_request).all_names_contain_berlin(self.response_body)
         # Assert
         self.assertEqual(self.response.status_code, 200)
