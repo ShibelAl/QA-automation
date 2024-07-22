@@ -36,5 +36,3 @@ class Post:
             return all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
         except KeyError:
             return False
-
-
