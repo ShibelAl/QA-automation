@@ -9,7 +9,7 @@ class TestProfileAPIs(unittest.TestCase):
     def setUp(self):
         """
         Set up the test environment by loading the configuration and initializing the API wrapper,
-        and then making a profile_APIs object, its API response and its json body.
+        and then making a profile_APIs object, and API response.
         """
         self._config = ConfigProvider.load_config_json()
         self._api_request = APIWrapper()
