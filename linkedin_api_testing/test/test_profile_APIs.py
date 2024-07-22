@@ -4,7 +4,7 @@ from infra.config_provider import ConfigProvider
 from logic.profile_APIs import ProfileAPIs
 
 
-class TestCompany(unittest.TestCase):
+class TestProfileAPIs(unittest.TestCase):
 
     def setUp(self):
         """
