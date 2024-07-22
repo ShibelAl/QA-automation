@@ -42,5 +42,22 @@
   "search_locations_headers" : {
 	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
 	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
-  }
+  },
+
+  "get_profile_data_by_url_endpoint" : "get-profile-data-by-url",
+  "get_profile_data_by_url_querystring" : {"url":"https://www.linkedin.com/in/shibel-alshech-7501b4308/"},
+  "get_profile_data_by_url_headers" : {
+	"x-rapidapi-key": "989ecf11b6mshe6f163870c5be08p12c207jsn3e7938597eee",
+	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
+  },
+  "username" : "shibel-alshech-7501b4308",
+  "firstName": "Shibel",
+  "lastName": "Alshech",
+  "isCreator": false,
+  "isOpenToWork": false,
+  "isHiring": false,
+  "profilePicture": "",
+  "backgroundImage": null,
+  "summary": "",
+  "headline": "Attended The Open University of Israel"
 }
