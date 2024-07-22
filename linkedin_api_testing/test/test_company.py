@@ -1,8 +1,8 @@
 import unittest
 from infra.api_wrapper import APIWrapper
-from logic.company import Company
 from infra.config_provider import ConfigProvider
 from logic.models.company_jobs import CompanyJobs
+from logic.company import Company
 
 
 class TestCompany(unittest.TestCase):
@@ -53,7 +53,7 @@ class TestCompany(unittest.TestCase):
 
         # Assert
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(len(company_jobs_data) > 0)
+        self.assertTrue(len(company_jobs_data) > 0, "There is no jobs appearing in the page")
 
     def test_each_job_has_all_fields(self):
         """
@@ -63,11 +63,11 @@ class TestCompany(unittest.TestCase):
         """
         # Act
         response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
-        company_jobs_data = response.json()["data"]["items"]
         each_job_has_all_fields = Company(self._api_request).has_all_required_fields()
+
         # Assert
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(each_job_has_all_fields)
+        self.assertTrue(each_job_has_all_fields, "There is a job that doesn't contain all the required fields")
 
     def test_job_url_goes_to_correct_job_id(self):
         """
@@ -81,6 +81,7 @@ class TestCompany(unittest.TestCase):
         # Act
         response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
         response_contains_wrong_url = Company(self._api_request).is_non_identical_pair()
+
         # Assert
         self.assertEqual(response.status_code, 200)
         self.assertFalse(response_contains_wrong_url, "There is a url that doesn't lead to the correct job")
