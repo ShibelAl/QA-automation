@@ -51,15 +51,6 @@
 	"x-rapidapi-host": "linkedin-api8.p.rapidapi.com"
   },
   "username" : "shibel-alshech-7501b4308",
-  "firstName": "Shibel",
-  "lastName": "Alshech",
-  "isCreator": false,
-  "isOpenToWork": false,
-  "isHiring": false,
-  "profilePicture": "",
-  "backgroundImage": null,
-  "summary": "",
-  "headline": "Attended The Open University of Israel",
 
   "get_profile_data_and_connections_follower_count_endpoint" : "data-connection-count",
   "get_profile_data_and_connections_follower_count_querystring" : {"username":"shibel-alshech-7501b4308"},
