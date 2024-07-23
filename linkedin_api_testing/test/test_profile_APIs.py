@@ -1,4 +1,5 @@
 import unittest
+from parameterized import parameterized
 from infra.api_wrapper import APIWrapper
 from infra.config_provider import ConfigProvider
 from logic.profile_APIs import ProfileAPIs
@@ -16,7 +17,13 @@ class TestProfileAPIs(unittest.TestCase):
         self.profile = ProfileAPIs(self._api_request)
         self.response = self.profile.get_profile_data_by_url()
 
-    def test_if_user_data_is_correct(self):
+    @parameterized.expand([
+        ["username", "shibel-alshech-7501b4308"], ["firstName", "Shibel"],
+        ["lastName", "Alshech"], ["isCreator", False], ["isOpenToWork", False],
+        ["isHiring", False], ["profilePicture", ""], ["backgroundImage", None],
+        ["summary", ""], ["headline", "Attended The Open University of Israel"]
+    ])
+    def test_if_user_data_is_correct(self, name, expected_data):
         """
         Test if the user data is correct.
 
@@ -27,16 +34,7 @@ class TestProfileAPIs(unittest.TestCase):
         response_body = self.response.json()
         # Assert
         self.assertEqual(self.response.status_code, 200)
-        self.assertEqual(response_body['username'], self._config['username'])
-        self.assertEqual(response_body['firstName'], self._config['firstName'])
-        self.assertEqual(response_body['lastName'], self._config['lastName'])
-        self.assertEqual(response_body['isCreator'], self._config['isCreator'])
-        self.assertEqual(response_body['isOpenToWork'], self._config['isOpenToWork'])
-        self.assertEqual(response_body['isHiring'], self._config['isHiring'])
-        self.assertEqual(response_body['profilePicture'], self._config['profilePicture'])
-        self.assertEqual(response_body['backgroundImage'], self._config['backgroundImage'])
-        self.assertEqual(response_body['summary'], self._config['summary'])
-        self.assertEqual(response_body['headline'], self._config['headline'])
+        self.assertEqual(response_body[name], expected_data)
 
     def test_specific_fields_in_the_API_response(self):
         """
@@ -51,3 +49,7 @@ class TestProfileAPIs(unittest.TestCase):
         self.assertEqual(response_body['username'], self._config['username'])
         self.assertEqual(response_body['educations'][0]['fieldOfStudy'], self._config['fieldOfStudy'])
         self.assertEqual(response_body['educations'][0]['degree'], self._config['degree'])
+
+
+if __name__ == '__main__':
+    unittest.main()
