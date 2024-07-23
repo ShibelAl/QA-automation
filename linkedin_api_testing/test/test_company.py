@@ -6,6 +6,7 @@ from logic.company import Company
 
 
 class TestCompany(unittest.TestCase):
+    FIRST_ELEMENT = 0
 
     def setUp(self):
         """
@@ -35,10 +36,12 @@ class TestCompany(unittest.TestCase):
         company_jobs_body = response.json()
 
         # Assert
+        print(company_jobs_body)
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(company_jobs_body, dict)
         self.assertIsInstance(company_jobs_body['data'], dict)
         self.assertIsInstance(company_jobs_body['data']['items'], list)
+        self.assertIsInstance(company_jobs_body['data']['items'][self.FIRST_ELEMENT]['company'], dict)
 
     def test_website_page_is_not_empty(self):
         """
