@@ -10,9 +10,7 @@ class Company:
     - request: The request object to handle HTTP requests.
     - config: The configuration loaded from the JSON file.
     """
-
     GET_COMPANY_JOBS_ENDPOINT = "/company-jobs"
-
 
     def __init__(self, request):
         """
