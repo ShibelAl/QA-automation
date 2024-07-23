@@ -36,7 +36,6 @@ class TestCompany(unittest.TestCase):
         company_jobs_body = response.json()
 
         # Assert
-        print(company_jobs_body)
         self.assertEqual(response.status_code, 200)
         self.assertIsInstance(company_jobs_body, dict)
         self.assertIsInstance(company_jobs_body['data'], dict)

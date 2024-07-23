@@ -2,7 +2,6 @@
   "browser": "Chrome",
   "base_url": "https://linkedin-api8.p.rapidapi.com",
 
-  "get_company_jobs_endpoint" : "company-jobs",
   "get_company_jobs_payload" : {
 	"companyIds": [5383240, 2382910],
 	"page": 1

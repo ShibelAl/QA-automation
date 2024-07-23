@@ -10,6 +10,10 @@ class Company:
     - request: The request object to handle HTTP requests.
     - config: The configuration loaded from the JSON file.
     """
+
+    GET_COMPANY_JOBS_ENDPOINT = "/company-jobs"
+
+
     def __init__(self, request):
         """
         Initializes the Company class with a request object and loads configuration.
@@ -26,7 +30,7 @@ class Company:
         :param comp_job: The payload to be sent in the POST request.
         :return: The response from the POST request.
         """
-        url = f"{self._config['base_url']}/{self._config['get_company_jobs_endpoint']}"
+        url = f"{self._config['base_url']}{self.GET_COMPANY_JOBS_ENDPOINT}"
         return self._request.post_request(url, self._config['get_company_jobs_headers'], comp_job)
 
     def get_company_object(self):
