@@ -32,13 +32,14 @@ git clone https://github.com/ShibelAl/QA-automation.git
 
 3. Set up your config.json file with the necessary configurations, such as API keys and endpoints.
 
-Running the Tests
+### Running the Tests
 
-Open the project in PyCharm (or your preferred IDE).
+1. Open the project in PyCharm (or your preferred IDE).
 
-Ensure the config.json file is correctly configured with your API keys and endpoint details.
+2. Ensure the config.json file is correctly configured with your API keys and endpoint details.
 
-Run the tests.
+3. Run the tests.
+
 
 
 #### Feel free to adjust any sections or details to better fit your specific project and requirements.
