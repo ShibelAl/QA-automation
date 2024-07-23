@@ -33,6 +33,6 @@ class Post:
             items = json_response['data']['items']
             format_str = "%Y-%m-%d %H:%M:%S"
             dates = [datetime.strptime(item['postedDate'][:19], format_str) for item in items]
-            return all(dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
+            return (dates[i] >= dates[i + 1] for i in range(len(dates) - 1))
         except KeyError:
             return False

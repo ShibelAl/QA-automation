@@ -32,7 +32,7 @@ class TestCompany(unittest.TestCase):
         response = Post(self._api_request).search_post_by_keywords(self.search_results_object.to_dict())
         response_body = response.json()
         is_all_jobs_ordered_from_new_to_old = Post(self._api_request).is_all_jobs_ordered_from_new_to_old(response_body)
-
+        print(response_body)
         # Assert
         self.assertEqual(response.status_code, 200)
         self.assertTrue(is_all_jobs_ordered_from_new_to_old, "The jobs not ordered from newest to oldest")
