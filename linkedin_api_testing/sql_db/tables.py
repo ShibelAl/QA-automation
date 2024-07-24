@@ -38,7 +38,7 @@ class Tables:
         response = Company(self._api_request).get_company_job_by_body(company_object.to_dict())
         response_body = response.json()
         # Uncomment the next line to print the response body
-        # print(response_body)
+        print(response_body)
         return response_body
 
     def create_companies_table(self):
@@ -80,11 +80,6 @@ class Tables:
         Fetches job data from the API, clears existing tables, creates tables if they don't exist,
         and inserts job records into the jobs table. If a record already exists, it will be replaced.
         """
-        try:
-            self.clear_tables()
-        except sqlite3.OperationalError as e:
-            print(f"No such table to clear!: {e}")
-
         self.create_companies_table()
         self.create_jobs_table()
         items = self.get_response()['data']['items']
@@ -98,6 +93,27 @@ class Tables:
                 self.conn.commit()
             except sqlite3.IntegrityError as e:
                 print(f"Error inserting job record: {e}")
+
+    def insert_companies_records(self):
+        """
+        Insert company records into the database.
+
+        Fetches job data from the API, clears existing tables, creates tables if they don't exist,
+        and inserts company records into the companies table. If a record already exists, it will be replaced.
+        """
+        self.create_companies_table()
+        self.create_jobs_table()
+        jobs = self.get_response()['data']['items']
+        for job in jobs:
+            company = job['company']
+            name = company['name']
+            url = company['url']
+            try:
+                self.cursor.execute("INSERT OR REPLACE INTO companies (name, url) VALUES (?, ?)",
+                                    (name, url))
+                self.conn.commit()
+            except sqlite3.IntegrityError as e:
+                print(f"Error inserting company record: {e}")
 
     def drop_table(self):
         """
@@ -118,4 +134,5 @@ if __name__ == "__main__":
     tables = Tables()
     tables.get_response()
     tables.insert_jobs_records()
+    tables.insert_companies_records()
     tables.close_connection()
