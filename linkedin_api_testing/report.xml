@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+    <testsuite name="pytest" errors="0" failures="0" skipped="0" tests="19" time="32.803"
+               timestamp="2024-07-25T11:09:28.486197+03:00" hostname="shibel">
+        <testcase classname="test.test_company.TestCompany" name="test_company_response_data_structures" time="1.594"/>
+        <testcase classname="test.test_company.TestCompany" name="test_each_job_has_all_fields" time="3.263"/>
+        <testcase classname="test.test_company.TestCompany" name="test_job_url_goes_to_correct_job_id" time="2.825"/>
+        <testcase classname="test.test_company.TestCompany" name="test_website_page_is_not_empty" time="1.447"/>
+        <testcase classname="test.test_contact_api.TestContactAPI" name="test_user_did_not_provide_email" time="2.181"/>
+        <testcase classname="test.test_job_APIs.TestCompany" name="test_unique_job_ids" time="2.146"/>
+        <testcase classname="test.test_location.TestCompany" name="test_if_locations_is_in_berlin" time="0.902"/>
+        <testcase classname="test.test_post.TestCompany" name="test_jobs_appearing_by_time_order" time="2.347"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_0_username"
+                  time="1.189"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_1_firstName"
+                  time="2.098"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_2_lastName"
+                  time="1.323"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_3_isCreator"
+                  time="1.495"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_4_isOpenToWork"
+                  time="1.533"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_5_isHiring"
+                  time="1.745"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs"
+                  name="test_if_user_data_is_correct_6_profilePicture" time="1.344"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs"
+                  name="test_if_user_data_is_correct_7_backgroundImage" time="1.354"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_8_summary"
+                  time="1.075"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_if_user_data_is_correct_9_headline"
+                  time="1.382"/>
+        <testcase classname="test.test_profile_APIs.TestProfileAPIs" name="test_specific_fields_in_the_API_response"
+                  time="1.367"/>
+    </testsuite>
+</testsuites>
