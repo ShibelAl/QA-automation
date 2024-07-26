@@ -3,10 +3,12 @@ from infra.api_wrapper import APIWrapper
 from infra.config_provider import ConfigProvider
 from logic.models.company_jobs import CompanyJobs
 from logic.company import Company
+from infra.jira_handler import JiraHandler
 
 
 class TestCompany(unittest.TestCase):
     FIRST_ELEMENT = 0
+    FUNCTION_BUG = "Bug in the function"
 
     def setUp(self):
         """
@@ -70,6 +72,9 @@ class TestCompany(unittest.TestCase):
         # Assert
         self.assertEqual(response.status_code, 200)
         self.assertTrue(each_job_has_all_fields, "There is a job that doesn't contain all the required fields")
+        jira_handler = JiraHandler()
+        jira_handler.create_issue('LAT', "test_each_job_has_all_fields",
+                                  "Bug in the function")
 
     def test_job_url_goes_to_correct_job_id(self):
         """
