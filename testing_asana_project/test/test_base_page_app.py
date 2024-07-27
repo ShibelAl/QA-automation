@@ -2,12 +2,14 @@ import logging
 import unittest
 from infra.browser_wrapper import BrowserWrapper
 from infra.config_provider import ConfigProvider
+from infra.jira_handler import JiraHandler
 from logic.login_page import LoginPage
 from logic.base_page_app import BasePageApp
 from infra.logging_setup import LoggingSetup  # it appears not used, without it logging fails
 
 
 class TestBasePageApp(unittest.TestCase):
+    FUNCTION_BUG = "Bug in the function"
 
     def setUp(self):
         """
@@ -40,8 +42,13 @@ class TestBasePageApp(unittest.TestCase):
         base_page_app = BasePageApp(self.driver)
         # Act
         base_page_app.click_on_create_button()
-        # Assert
-        self.assertTrue(base_page_app.pop_up_after_pressing_create_is_displayed())
+        try:
+            # Assert
+            self.assertTrue(base_page_app.pop_up_after_pressing_create_is_displayed())
+        except AssertionError:
+            jira_handler = JiraHandler()
+            jira_handler.create_issue(self.config['jira_key'], "test_each_job_has_all_fields", self.FUNCTION_BUG)
+            raise AssertionError("assertion error")
 
     def test_opening_new_project_window(self):
         """
