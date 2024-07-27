@@ -75,8 +75,7 @@ class TestCompany(unittest.TestCase):
             self.assertTrue(each_job_has_all_fields, "There is a job that doesn't contain all the required fields")
         except AssertionError:
             jira_handler = JiraHandler()
-            jira_handler.create_issue('LAT', "test_each_job_has_all_fields",
-                                      "Bug in the function")
+            jira_handler.create_issue(self._config['jira_key'], "test_each_job_has_all_fields", self.FUNCTION_BUG)
             raise AssertionError("assertion error")
 
     def test_job_url_goes_to_correct_job_id(self):

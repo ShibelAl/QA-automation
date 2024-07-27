@@ -3,7 +3,7 @@
   "base_url": "https://linkedin-api8.p.rapidapi.com",
   "jira_url" : "https://shibelalshech300.atlassian.net/",
   "jira_email" : "shibelalshech300@gmail.com",
-  "jira_key_linkedin_api_testing" : "LAT",
+  "jira_key" : "LAT",
 
   "get_company_jobs_payload" : {
 	"companyIds": [5383240, 2382910],
