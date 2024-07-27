@@ -65,16 +65,19 @@ class TestCompany(unittest.TestCase):
 
         :raises AssertionError: If the response status code is not 200 or if any job is missing required fields.
         """
-        # Act
-        response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
-        each_job_has_all_fields = Company(self._api_request).has_all_required_fields()
+        try:
+            # Act
+            response = Company(self._api_request).get_company_job_by_body(self.company_object.to_dict())
+            each_job_has_all_fields = Company(self._api_request).has_all_required_fields()
 
-        # Assert
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(each_job_has_all_fields, "There is a job that doesn't contain all the required fields")
-        jira_handler = JiraHandler()
-        jira_handler.create_issue('LAT', "test_each_job_has_all_fields",
-                                  "Bug in the function")
+            # Assert
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(each_job_has_all_fields, "There is a job that doesn't contain all the required fields")
+        except AssertionError:
+            jira_handler = JiraHandler()
+            jira_handler.create_issue('LAT', "test_each_job_has_all_fields",
+                                      "Bug in the function")
+            raise AssertionError("assertion error")
 
     def test_job_url_goes_to_correct_job_id(self):
         """
