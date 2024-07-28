@@ -8,7 +8,7 @@ class Owner:
         if pet.is_vaccinated:
             self._pets.append(pet)
 
-    def remove_pet_to_owner_pets(self, pet):
+    def remove_pet_from_owner_pets(self, pet):
         if pet in self._pets:
             self._pets.remove(pet)
 
