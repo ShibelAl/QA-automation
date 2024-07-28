@@ -1,4 +1,6 @@
 class Pet:
+    total_pets = 0
+
     def __init__(self, name, species, age, owner, vaccinated):
         self._name = None
         self._species = None
@@ -59,6 +61,17 @@ class Pet:
         if not isinstance(value, bool):
             raise ValueError("Vaccinated should be a bool")
         self._is_vaccinated = value
+
+    def mark_as_vaccinated(self):
+        self.is_vaccinated = True
+
+    def age_in_human_years(self):
+        return self.age * 7
+
+    def __eq__(self, other):
+        if not isinstance(other, Pet):
+            return False
+        return self._name == other._name and self._species == other._species
 
     def __str__(self):
         return (f"Pet(name: {self.name},"
