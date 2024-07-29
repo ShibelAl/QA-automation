@@ -68,6 +68,18 @@ class Pet:
     def age_in_human_years(self):
         return self.age * 7
 
+    def to_dict(self):
+        """
+        Converts the pet's attributes to a dictionary.
+        """
+        return {
+            'name': self.name,
+            'species': self.species,
+            'age': self.age,
+            'owner': self.owner,
+            'is_vaccinated': self.is_vaccinated
+        }
+
     def __eq__(self, other):
         if not isinstance(other, Pet):
             return False
