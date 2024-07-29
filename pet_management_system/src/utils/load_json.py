@@ -9,6 +9,6 @@ def save_data(library):
 
 
 def load_data():
-    with open("./data.json", 'r') as file:
+    with open("../../database/data.json", 'r') as file:
         data = json.load(file)
         return data
