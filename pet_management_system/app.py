@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from load_json import load_data, save_data
+from owner import Owner
 from owner_management import OwnerManagement
 
 app = Flask(__name__)
@@ -20,17 +21,24 @@ def owner_page():
 @app.route('/add_owner', methods=['GET', 'POST'])
 def add_owner():
     if request.method == 'POST':
-        name = request.form['name']
-        phone = request.form['phone']
-        new_owner = {
-            'owner_name': name,
-            'phone_number': phone,
-            'pets': []
-        }
+        name = request.form['name'].strip()
+        phone = request.form['phone'].strip()
+        new_owner = Owner(name, phone)
         owner_management.add_owner(new_owner)
         return redirect(url_for('owner_page'))
-
     return render_template('add_owner.html')
+
+
+@app.route('/add_pet/<owner_phone_number>')
+def add_pet(owner_phone_number):
+    # Implement the logic to add a pet to the owner
+    return f"Add pet for owner with phone number {owner_phone_number}"
+
+
+@app.route('/pets_list/<owner_phone_number>')
+def pets_list(owner_phone_number):
+    # Implement the logic to list pets for the owner
+    return f"List of pets for owner with phone number {owner_phone_number}"
 
 
 if __name__ == '__main__':
