@@ -1,9 +1,9 @@
 import json
-from owner import Owner
+from src.classes.owner import Owner
 
 
 class OwnerManagement:
-    def __init__(self, filename="data.json"):
+    def __init__(self, filename="database/data.json"):
         self.filename = filename
         self.owners = []
         self.load_owners()
@@ -16,6 +16,7 @@ class OwnerManagement:
         for owner in self.owners:
             if owner.phone_number == owner_phone_number:
                 owner.add_pet_to_owner_pets(pet)
+                self.save_owners()
                 break
 
     def remove_pet_from_owner(self, pet, owner_phone_number):
@@ -25,10 +26,6 @@ class OwnerManagement:
                 break
 
     def load_owners(self):
-        """
-        Load library data from a JSON file into the library (books).
-        If the file does not exist, initialize an empty library.
-        """
         try:
             with open(self.filename, 'r') as file:
                 owner_dicts = json.load(file)
